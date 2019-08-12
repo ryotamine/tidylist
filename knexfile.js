@@ -5,7 +5,12 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      database: "tidylist_users"
+      database: "tidylist_users",
+      user: "labber",
+      password: "labber"
+    },
+    migrations: {
+      directory: "./db/migrations"
     },
     useNullAsDefault: true
   },
@@ -13,10 +18,9 @@ module.exports = {
   staging: {
     client: "pg",
     connection: {
-      database: "tidylist_users"
-    },
-    migrations: {
-      tableName: "users"
+      database: "tidylist_users",
+      user: "labber",
+      password: "labber"
     },
     useNullAsDefault: true
   },
@@ -24,10 +28,9 @@ module.exports = {
   production: {
     client: "pg",
     connection: {
-      database: "tidylist_users"
-    },
-    migrations: {
-      directory: "./db/migrations"
+      database: "tidylist_users",
+      user: "labber",
+      password: "labber"
     },
     useNullAsDefault: true
   }
