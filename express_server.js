@@ -1,7 +1,8 @@
 "use strict"
 
 // Libraries
-const express = require("express");
+const express    = require("express");
+const bodyParser = require("body-parser");
 
 // Use port 8080
 const app  = express();
@@ -11,6 +12,9 @@ const PORT = 8080;
 const environment   = process.env.NODE_ENV || "development";
 const configuration = require("./knexfile")[environment];
 const database      = require("knex")(configuration);
+
+// Use body parser for all routes
+app.use(bodyParser.json());
 
 // Boot server
 app.listen(PORT, () => {
