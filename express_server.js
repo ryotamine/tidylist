@@ -24,6 +24,17 @@ app.use(cookieSession({
 // Use body parser for all routes
 app.use(bodyParser.json());
 
+/* Generate string of 9 random numeric characters for user ID in register 
+database */
+function generateRandomString() {
+  let text = "";
+  let str = "0123456789";
+  for (let i = 0; i < 9; i++) {
+    text += str.charAt(Math.floor(Math.random() * str.length));
+  }
+  return text;
+}
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
