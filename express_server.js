@@ -126,6 +126,20 @@ app.post("/profile", (req, res) => {
   }
 });
 
+// DELETE profile
+app.delete("/delete-profile", (req, res) => {
+  database("users")
+    .where({
+      id: database.id
+    })
+    .del()
+    .then(() => {
+      // Remove cookie session 
+      req.session = null;
+      res.redirect("/");
+    });
+});
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
