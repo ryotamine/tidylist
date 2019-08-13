@@ -105,7 +105,7 @@ app.post("/login", (req, res) => {
 });
 
 // POST profile update
-app.post("/profile", (req, res) => {
+app.post("/update-profile", (req, res) => {
   const profileEmail = req.body.email;
   const profilePassword = req.body.password;
   const hashedProfilePassword = bcrypt.hashSync(profilePassword, 10);
