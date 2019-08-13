@@ -35,6 +35,45 @@ function generateRandomString() {
   return text;
 }
 
+// POST registration form
+app.post("/register", (req, res) => {
+  const userId = generateRandomString();
+  const registerEmail = req.body.email;
+  const registerPassword = req.body.password;
+  const hashedRegisterPassword = bcrypt.hashSync(registerPassword, 10);
+
+  // Check for registration errors
+  if (!email || !password) {
+    res.status(400).send("Invalid entry. Please try again.");
+    return;
+  } else {
+    /* Check if email already exists in users database.
+    If so, send error message.
+    If not, add registration information in users database. */
+    database.select("email")
+      .from("users")
+      .where("email", registerEmail)
+      .then((emailList) => {
+        if (emailList.length !== 0) {
+          res.status(400).send("Email already exists. Please try again.");
+          return;
+        } else {
+          database.insert([{
+            id: userId,
+            email: registerEmail,
+            password: hashedRegisterPassword
+          }])
+          .into("users")
+          .then(() => {
+            // Add cookie session after registration
+            req.session.user_id = userId;
+            res.json({url1: `/${userId}`});
+          });
+        }
+      });
+  }
+});
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
