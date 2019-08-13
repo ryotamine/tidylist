@@ -98,7 +98,7 @@ app.post("/login", (req, res) => {
         } else {
           // Add cookie session after login
           req.session.user_id = database.id;
-          res.json({url1: `/${userId}`});
+          res.json({url1: `/${database.id}`});
         }
       });
   }
