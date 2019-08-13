@@ -104,6 +104,28 @@ app.post("/login", (req, res) => {
   }
 });
 
+// POST profile update
+app.post("/profile", (req, res) => {
+  const profileEmail = req.body.email;
+  const profilePassword = req.body.password;
+  const hashedProfilePassword = bcrypt.hashSync(profilePassword, 10);
+
+  // Check for profile update errors
+  if (!profileEmail || !profilePassword) {
+    res.status(400).send("Invalid entry. Please try again.");
+    return;
+  } else {
+    database("users")
+      .where({
+        id: database.id
+      })
+      .update({
+        email: profileEmail,
+        password: hashedProfilePassword
+      });
+  }
+});
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
