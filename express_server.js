@@ -140,6 +140,13 @@ app.delete("/delete-profile", (req, res) => {
     });
 });
 
+// DELETE logout
+app.delete("/logout", (req, res) => {
+  // Remove cookie session 
+  req.session = null;
+  res.redirect("/");
+});
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
