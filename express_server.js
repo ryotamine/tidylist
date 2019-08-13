@@ -74,6 +74,36 @@ app.post("/register", (req, res) => {
   }
 });
 
+// POST login form
+app.post("/login", (req, res) => {
+  const loginEmail = req.body.email;
+  const loginPassword = req.body.password;
+
+  // Check for login errors
+  if (!loginEmail || !loginPassword) {
+    res.status(400).send("Invalid entry. Please try again.");
+    return;
+  } else {
+    /* Compare email and password to users database.
+    If both matches, go to user's page.
+    If not, send error message. */
+    database.select("password")
+      .from("users")
+      .where({
+        email: loginEmail
+      }).asCallback((err, rows) => {
+        let result = bcrypt.compareSync(loginPassword, rows[0].password);
+        if (result === false) {
+          res.status(400).send("Invalid password. Please try again.");
+        } else {
+          // Add cookie session after login
+          req.session.user_id = database.id;
+          res.json({url1: `/${userId}`});
+        }
+      });
+  }
+});
+
 // Boot server
 app.listen(PORT, () => {
   console.log(`Tidylist app listening on port ${PORT}!`);
