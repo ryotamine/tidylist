@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Register from "./register";
 import "./App.css";
 
 class Home extends Component {
@@ -44,6 +45,7 @@ class Home extends Component {
         <a className="email" href="mailto:ryotamine@gmail.com">
           <i className="fas fa-envelope fa-2x" alt="Email"></i>
         </a>
+        { this.state.openRegister && <Register closePopup={this._closePopups}/> }
       </div>
     );
   }
