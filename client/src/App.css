@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.home {
+  padding: 10px;
+}
+
+i {
+  padding: 8px 8px 0px;
+}
+
+.title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 64px;
+  margin: 0px;
+  padding-bottom: 8px;
+}
