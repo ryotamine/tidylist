@@ -30,44 +30,44 @@ class Register extends Component {
         onClose={this.props.closePopup}
       >
         <div>
-          <a className="close" onClick={this.props.closePopup}>
-            &times;
-          </a>
-
           <form className="register-form">
-            <label htmlFor="email">
-              <b>Email</b>
-            </label>
-            <input
-              className="email-register"
-              type="text"
-              value={this.state.value}
-              onBlur={this._handleChange}
-              placeholder="Enter Email"
-              id="email"
-            >
-            </input>
-
-            <label htmlFor="password">
-              <b>Password</b>
-            </label>
-            <input
-              className="password-register"
-              type="password"
-              value={this.state.value}
-              onBlur={this._handleChange}
-              placeholder="Enter Password"
-              id="password"
-            >
-            </input>
-
-            <button
-              className="submit-register"
-              type="submit"
-              value="submit"
-            >
-              Register
-            </button>
+            <div className="register-background">
+              <div>
+                <span className="fas fa-envelope icon-before" alt="Email">
+                </span>
+                <input
+                  className="email-register"
+                  type="email"
+                  value={this.state.value}
+                  onBlur={this._handleChange}
+                  placeholder="Email"
+                  id="email"
+                >
+                </input>
+              </div>
+              <div>
+                <span className="fas fa-lock icon-before" alt="Password">
+                </span>
+                <input
+                  className="password-register"
+                  type="password"
+                  value={this.state.value}
+                  onBlur={this._handleChange}
+                  placeholder="Password"
+                  id="password"
+                >
+                </input>
+              </div>
+            </div>
+            <div>
+              <button
+                className="submit-register"
+                type="submit"
+                value="submit"
+              >
+                Register
+              </button>
+            </div>
           </form>
         </div>
       </Popup>
