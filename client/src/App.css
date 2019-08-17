@@ -50,8 +50,8 @@ input[type=email], input[type=password] {
   padding: 24px !important;
 }
 
-/* Register submit button */
-.submit-register {
+/* Register and login submit buttons */
+.submit-register, .submit-login {
   background-color: #2196F3;
   border: none;
   border-radius: 12px;
