@@ -14,6 +14,12 @@ i {
   padding: 8px 8px 0px;
 }
 
+/* Fontawesome hover icons */
+i:hover {
+  color: grey;
+  cursor: pointer;
+}
+
 /* Icons before input fields */
 .icon-before {
   border-bottom: 1px solid #ccc;
