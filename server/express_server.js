@@ -5,10 +5,11 @@ const express       = require("express");
 const cookieSession = require("cookie-session");
 const bcrypt        = require("bcrypt");
 const bodyParser    = require("body-parser");
+const cors          = require("cors");
 
-// Use port 8080
+// Use port 5000
 const app  = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 5000;
 
 // Create AJAX database environment
 const environment   = process.env.NODE_ENV || "development";
@@ -19,6 +20,12 @@ const database      = require("knex")(configuration);
 app.use(cookieSession({
   name: "session",
   keys: ["tidylist"]
+}));
+
+// User CORS for all routes
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:5000"
 }));
 
 // Use body parser for all routes
@@ -43,7 +50,7 @@ app.post("/register", (req, res) => {
   const hashedRegisterPassword = bcrypt.hashSync(registerPassword, 10);
 
   // Check for registration errors
-  if (!email || !password) {
+  if (!registerEmail || !registerPassword) {
     res.status(400).send("Invalid entry. Please try again.");
     return;
   } else {

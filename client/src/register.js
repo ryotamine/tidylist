@@ -21,6 +21,28 @@ class Register extends Component {
     });
   }
 
+  // Register submission helper function
+  _handleRegister = (e) => {
+    e.preventDefault();
+    this.setState({
+      register: true
+    });
+    sessionStorage.setItem("email", this.state.email);
+
+    if (this.state.register) {
+      fetch("/register", {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          "email": this.state.email,
+          "password": this.state.password
+        })
+      })
+      .then(res => res.json());
+    }
+  }
+
   // Render register popup
   render() {
     return (
@@ -64,6 +86,7 @@ class Register extends Component {
                 className="submit-register"
                 type="submit"
                 value="submit"
+                onClick={this._handleRegister}
               >
                 Register
               </button>
