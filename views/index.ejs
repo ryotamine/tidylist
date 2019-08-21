@@ -9,30 +9,65 @@
   <body>
     <div class="app">
       <h1 class="title">TIDYLIST</h1>
-      <span class="register">
+      <span id="registerBtn" class="register">
         <i class="fas fa-user-plus fa-2x" alt="Register"></i>
       </span>
-      <span class="login">
+      <span id="loginBtn" class="login">
         <i class="fas fa-sign-in-alt fa-2x" alt="Login"></i>
       </span>
       <a class="email" href="mailto:ryotamine@gmail.com">
         <i class="fas fa-envelope fa-2x" alt="Email"></i>
       </a>
 
-      <!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+      <!-- Register modal -->
+      <div id="registerModal" class="modal">
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+        <!-- Register modal content -->
+        <div class="modal-content">
+          <!-- <span class="close">&times;</span> -->
+          <form action="/register?_method=PUT" method="POST">
+            <div>
+              <span class="fas fa-envelope icon-before" alt="Email">
+              </span>
+              <input 
+                class="email-register" 
+                type="email" 
+                name="email" 
+                placeholder="Email"
+              >
+            </div>
+            <div>
+              <span class="fas fa-lock icon-before" alt="Password">
+              </span>
+              <input 
+                class="password-register" 
+                type="password" 
+                name="password" 
+                placeholder="Password"
+              >
+            </div>
+            <div>
+              <button class="submit-register">
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
+      </div>
 
-</div>
+      <!-- Login modal -->
+      <div id="loginModal" class="modal">
+
+        <!-- Login modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Login</p>
+        </div>
+
+      </div>
     </div>
+
     <% include partials/_footer %> 
   </body>
 </html>
