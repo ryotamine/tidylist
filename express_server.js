@@ -1,15 +1,15 @@
 "use strict";
 
 // Libraries
-const express       = require("express");
-const cookieSession = require("cookie-session");
-const bcrypt        = require("bcrypt");
-const bodyParser    = require("body-parser");
-const cors          = require("cors");
+const express        = require("express");
+const cookieSession  = require("cookie-session");
+const bcrypt         = require("bcrypt");
+const bodyParser     = require("body-parser");
+const methodOverride = require("method-override");
 
-// Use port 5000
+// Use port 8080
 const app  = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 8080;
 
 // Create AJAX database environment
 const environment   = process.env.NODE_ENV || "development";
@@ -22,14 +22,15 @@ app.use(cookieSession({
   keys: ["tidylist"]
 }));
 
-// User CORS for all routes
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:5000"
-}));
-
 // Use body parser for all routes
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Use method override for login, register, and logout
+app.use(methodOverride("_method"));
+
+// Set ejs as the template engine
+app.set("view engine", "ejs");
+app.use(express.static(__dirname, "/styles"));
 
 /* Generate string of 9 random numeric characters for user ID in register 
 database */
@@ -41,6 +42,11 @@ function generateRandomString() {
   }
   return text;
 }
+
+// GET home page
+app.get("/", (req, res) => {
+  res.render("urls_index");
+});
 
 // POST registration form
 app.post("/register", (req, res) => {
@@ -74,7 +80,7 @@ app.post("/register", (req, res) => {
           .then(() => {
             // Add cookie session after registration
             req.session.user_id = userId;
-            res.json({url1: `/${userId}`});
+            res.redirect(`/${userId}`);
           });
         }
       });
