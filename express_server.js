@@ -49,8 +49,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-// POST registration form
-app.post("/register", (req, res) => {
+// PUT registration form
+app.put("/register", (req, res) => {
   const userId = generateRandomString();
   const registerEmail = req.body.email;
   const registerPassword = req.body.password;
