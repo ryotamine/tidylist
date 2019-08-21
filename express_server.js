@@ -30,7 +30,8 @@ app.use(methodOverride("_method"));
 
 // Set ejs as the template engine
 app.set("view engine", "ejs");
-app.use(express.static(__dirname, "/styles"));
+app.use(express.static(__dirname + "/styles"));
+app.use(express.static(__dirname + "/scripts"));
 
 /* Generate string of 9 random numeric characters for user ID in register 
 database */
@@ -45,7 +46,7 @@ function generateRandomString() {
 
 // GET home page
 app.get("/", (req, res) => {
-  res.render("urls_index");
+  res.render("index");
 });
 
 // POST registration form
