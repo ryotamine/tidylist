@@ -25,12 +25,16 @@ app.use(cookieSession({
 // Use body parser for all routes
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Use method override for login, register, and logout
+// Use method override for register, login, and logout
 app.use(methodOverride("_method"));
 
 // Set ejs as the template engine
 app.set("view engine", "ejs");
+
+// Use CSS in ejs
 app.use(express.static(__dirname + "/styles"));
+
+// Use scripts in ejs
 app.use(express.static(__dirname + "/scripts"));
 
 /* Generate string of 9 random numeric characters for user ID in register 
@@ -52,12 +56,12 @@ app.get("/", (req, res) => {
 // PUT registration form
 app.put("/register", (req, res) => {
   const userId = generateRandomString();
-  const registerEmail = req.body.email;
-  const registerPassword = req.body.password;
-  const hashedRegisterPassword = bcrypt.hashSync(registerPassword, 10);
+  const email = req.body.email;
+  const password = req.body.password;
+  const hashedPassword = bcrypt.hashSync(password, 10);
 
   // Check for registration errors
-  if (!registerEmail || !registerPassword) {
+  if (!email || !password) {
     res.status(400).send("Invalid entry. Please try again.");
     return;
   } else {
@@ -66,7 +70,7 @@ app.put("/register", (req, res) => {
     If not, add registration information in users database. */
     database.select("email")
       .from("users")
-      .where("email", registerEmail)
+      .where("email", email)
       .then((emailList) => {
         if (emailList.length !== 0) {
           res.status(400).send("Email already exists. Please try again.");
@@ -74,27 +78,27 @@ app.put("/register", (req, res) => {
         } else {
           database.insert([{
             id: userId,
-            email: registerEmail,
-            password: hashedRegisterPassword
+            email: email,
+            password: hashedPassword
           }])
           .into("users")
           .then(() => {
             // Add cookie session after registration
             req.session.user_id = userId;
-            res.redirect(`/${userId}`);
+            res.redirect(`/${email}`);
           });
         }
       });
   }
 });
 
-// POST login form
-app.post("/login", (req, res) => {
-  const loginEmail = req.body.email;
-  const loginPassword = req.body.password;
+// PUT login form
+app.put("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
 
   // Check for login errors
-  if (!loginEmail || !loginPassword) {
+  if (!email || !password) {
     res.status(400).send("Invalid entry. Please try again.");
     return;
   } else {
@@ -104,18 +108,23 @@ app.post("/login", (req, res) => {
     database.select("password")
       .from("users")
       .where({
-        email: loginEmail
+        email: email
       }).asCallback((err, rows) => {
-        let result = bcrypt.compareSync(loginPassword, rows[0].password);
+        let result = bcrypt.compareSync(password, rows[0].password);
         if (result === false) {
           res.status(400).send("Invalid password. Please try again.");
         } else {
           // Add cookie session after login
           req.session.user_id = database.id;
-          res.json({url1: `/${database.id}`});
+          res.redirect(`/${email}`);
         }
       });
   }
+});
+
+// GET Tidylist page
+app.get("/:email", (req, res) => {
+  res.render("tidylist");
 });
 
 // POST profile update
