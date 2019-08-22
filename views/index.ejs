@@ -8,19 +8,16 @@
 
   <body>
     <div class="app">
+      <!-- App title -->
       <h1 class="title">TIDYLIST</h1>
-      <span id="registerBtn" class="register">
+
+      <!-- Register icon -->
+      <a class="modal-button" href="#register">
         <i class="fas fa-user-plus fa-2x" alt="Register"></i>
-      </span>
-      <span id="loginBtn" class="login">
-        <i class="fas fa-sign-in-alt fa-2x" alt="Login"></i>
-      </span>
-      <a class="email" href="mailto:ryotamine@gmail.com">
-        <i class="fas fa-envelope fa-2x" alt="Email"></i>
       </a>
 
       <!-- Register modal -->
-      <div id="registerModal" class="modal">
+      <div id="register" class="modal">
 
         <!-- Register modal content -->
         <div class="modal-content">
@@ -56,16 +53,53 @@
 
       </div>
 
+      <!-- Login icon -->
+      <a class="modal-button" href="#login">
+        <i class="fas fa-sign-in-alt fa-2x" alt="Login"></i>
+      </a>
+
       <!-- Login modal -->
-      <div id="loginModal" class="modal">
+      <div id="login" class="modal">
 
         <!-- Login modal content -->
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Login</p>
+          <!-- <span class="close">&times;</span> -->
+          <form action="/login?_method=PUT" method="POST">
+            <div>
+              <span class="fas fa-envelope icon-before" alt="Email">
+              </span>
+              <input 
+                class="email-login" 
+                type="email" 
+                name="email" 
+                placeholder="Email"
+              >
+            </div>
+            <div>
+              <span class="fas fa-lock icon-before" alt="Password">
+              </span>
+              <input 
+                class="password-login" 
+                type="password" 
+                name="password" 
+                placeholder="Password"
+              >
+            </div>
+            <div>
+              <button class="submit-login">
+                Login
+              </button>
+            </div>
+          </form>
         </div>
 
       </div>
+
+      <!-- Email icon -->
+      <a class="email" href="mailto:ryotamine@gmail.com">
+        <i class="fas fa-envelope fa-2x" alt="Email"></i>
+      </a>
+
     </div>
 
     <% include partials/_footer %> 

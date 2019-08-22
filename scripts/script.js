@@ -1,20 +1,44 @@
-// Get the register modal
-const registerModal = document.getElementById("registerModal");
+// Get the button that opens the modal
+const btn = document.getElementsByClassName("modal-button");
 
-// Get the register button that opens the modal
-const registerBtn = document.getElementById("registerBtn");
+// All page modals
+const modals = document.querySelectorAll(".modal");
 
-// When the user clicks on the register button, open the modal
-registerBtn.onclick = function() {
-  registerModal.style.display = "block";
-}
-
-// When the user clicks anywhere outside of the register modal, close it
-window.onclick = function(e) {
-  if (e.target == registerModal) {
-    registerModal.style.display = "none";
+// When the user clicks the button, open the modal
+for (let i = 0; i < btn.length; i++) {
+  btn[i].onclick = function() {
+    modals[i].style.display = "block";
   }
 }
+
+// When the users clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target.classList.contains("modal")) {
+    for (let index in modals) {
+      if (typeof modals[index].style !== "undefined") {
+        modals[index].style.display = "none";
+      }
+    }
+  }
+}
+
+// // Get the register modal
+// const registerModal = document.getElementById("registerModal");
+
+// // Get the register button that opens the modal
+// const registerBtn = document.getElementById("registerBtn");
+
+// // When the user clicks on the register button, open the modal
+// registerBtn.onclick = function() {
+//   registerModal.style.display = "block";
+// }
+
+// // When the user clicks anywhere outside of the register modal, close it
+// window.onclick = function(e) {
+//   if (e.target == registerModal) {
+//     registerModal.style.display = "none";
+//   }
+// }
 
 // // Get the login modal
 // const loginModal = document.getElementById("loginModal");
