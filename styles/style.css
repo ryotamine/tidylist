@@ -44,6 +44,16 @@ input[type=email], input[type=password] {
   width: 68%;
 }
 
+/* Entire list */
+ul {
+  padding-left: 0px;
+}
+
+/* List items */
+li {
+  list-style: none;
+}
+
 /* Modal background */
 .modal {
   background-color: rgb(0,0,0);
