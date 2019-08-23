@@ -13,7 +13,7 @@
 
       <!-- Update profile icon -->
       <a class="modal-button" href="#updateProfile">
-        <i class="fas fa-user fa-2x" alt="Update Profile"></i>
+        <i class="fas fa-user-edit fa-2x" alt="Update Profile"></i>
       </a>
 
       <!-- Update profile modal -->
@@ -105,19 +105,25 @@
 
       </div>
 
+      <!-- Add new list item -->
+      <div id="addItem" class="header">
+        <span class="fas fa-pencil-alt icon-before" alt="Title">
+        </span>
+        <input type="text" id="title" placeholder="Title">
+        <span 
+          onclick="newItem()" 
+          class="fas fa-plus-circle icon-after" 
+          alt="Add Item"
+        >
+        </span>
+      </div>
+
       <!-- To-do list -->
       <ul id="list">
         <li>Buy Food</li>
         <li>Make Food</li>
         <li>Eat Food</li>
       </ul>
-
-      <!-- Create new list item icon -->
-      <div>
-        <span>
-          <i class="fas fa-plus-circle fa-3x" alt="Create New List Item"></i>
-        </span>
-      </div>
 
     </div>
 
