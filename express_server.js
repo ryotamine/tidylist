@@ -124,27 +124,34 @@ app.put("/login", (req, res) => {
 
 // GET Tidylist page
 app.get("/:email", (req, res) => {
-  res.render("tidylist");
+  let templateVars = { email: req.params.email };
+  res.render("tidylist", templateVars);
 });
 
-// POST profile update
-app.post("/update-profile", (req, res) => {
-  const profileEmail = req.body.email;
-  const profilePassword = req.body.password;
-  const hashedProfilePassword = bcrypt.hashSync(profilePassword, 10);
+// PUT profile update
+app.put("/update-profile/:email", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const hashedPassword = bcrypt.hashSync(password, 10);
 
   // Check for profile update errors
-  if (!profileEmail || !profilePassword) {
+  if (!email || !password) {
     res.status(400).send("Invalid entry. Please try again.");
     return;
   } else {
     database("users")
       .where({
-        id: database.id
+        email: req.params.email
       })
       .update({
-        email: profileEmail,
-        password: hashedProfilePassword
+        email: email,
+        password: hashedPassword
+      })
+      .finally(() => {
+        database.destroy;
+      })
+      .then(() => {
+        res.redirect(`/${email}`);
       });
   }
 });
