@@ -6,7 +6,7 @@
 /* Fontawesome icons */
 i {
   color: black;
-  padding: 8px 8px 0px;
+  padding: 0px 8px 16px;
 }
 
 /* Fontawesome hover icons */
@@ -15,27 +15,40 @@ i:hover {
   cursor: pointer;
 }
 
+/* Icons after input fields */
+.icon-after {
+  border-bottom: 1px solid #ccc;
+  border-bottom-right-radius: 27px;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-top-right-radius: 27px;
+  font-size: 24px;
+  margin-bottom: 24px;
+  margin-left: -5px;
+  padding: 14px 24px 14px 0px;
+}
+
 /* Icons before input fields */
 .icon-before {
   border-bottom: 1px solid #ccc;
-  border-bottom-left-radius: 24px;
+  border-bottom-left-radius: 27px;
   border-left: 1px solid #ccc;
-  border-top-left-radius: 24px;
   border-top: 1px solid #ccc;
+  border-top-left-radius: 27px;
   font-size: 24px;
-  margin-right: -5px;
   margin-bottom: 24px;
+  margin-right: -5px;
   padding: 14px 0px 14px 24px;
 }
 
 /* Full-width input fields */
 input[type=email], input[type=password] {
   border-bottom: 1px solid #ccc;
-  border-bottom-right-radius: 24px;
+  border-bottom-right-radius: 27px;
   border-left: none;
   border-right: 1px solid #ccc;
   border-top: 1px solid #ccc;
-  border-top-right-radius: 24px;
+  border-top-right-radius: 27px;
   display: inline-block;
   font-size: 24px;
   margin-bottom: 24px;
@@ -44,9 +57,14 @@ input[type=email], input[type=password] {
   width: 68%;
 }
 
-/* Entire list */
-ul {
-  padding-left: 0px;
+input[type=text] {
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  font-size: 24px;
+  outline: none;
+  padding: 12px;
+  width: 60%;
 }
 
 /* List items */
@@ -96,6 +114,11 @@ li {
   font-size: 64px;
   margin: 0px;
   padding-bottom: 8px;
+}
+
+/* Entire list */
+ul {
+  padding-left: 0px;
 }
 
 /* Responsive design */
