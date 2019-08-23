@@ -61,14 +61,15 @@ input[type=email], input[type=password] {
   padding: 24px !important;
 }
 
-/* Register, login, update, and delete profile submit buttons */
-.submit-register, .submit-login, .submit-update, .submit-delete {
+/* Register, login, update, delete, and logout profile submit buttons */
+.submit-register, .submit-login, .submit-update, .submit-delete, .submit-logout {
   background-color: #2196F3;
   border: none;
   border-radius: 24px;
   color: #FFF;
   cursor: pointer;
   font-size: 24px;
+  outline: none;
   padding: 12px 24px;
   width: auto;
 }

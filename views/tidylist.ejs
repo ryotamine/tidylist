@@ -1,1 +1,111 @@
-<h1>Hello, World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/_header %>  
+
+    <title>Tidylist - <%= email %></title>
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- App title -->
+      <h1 class="title">TIDYLIST</h1>
+
+      <!-- Update profile icon -->
+      <a class="modal-button" href="#updateProfile">
+        <i class="fas fa-user fa-2x" alt="Update Profile"></i>
+      </a>
+
+      <!-- Update profile modal -->
+      <div id="updateProfile" class="modal">
+
+        <!-- Update profile modal content -->
+        <div class="modal-content">
+          <form action="/update-profile/<%= email %>?_method=PUT" method="POST">
+            <div>
+              <span class="fas fa-envelope icon-before" alt="Email">
+              </span>
+              <input 
+                class="email-update" 
+                type="email" 
+                name="email" 
+                placeholder="Email"
+              >
+            </div>
+            <div>
+              <span class="fas fa-lock icon-before" alt="Password">
+              </span>
+              <input 
+                class="password-update" 
+                type="password" 
+                name="password" 
+                placeholder="Password"
+              >
+            </div>
+            <div>
+              <button class="submit-update">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Logout icon -->
+      <a class="modal-button" href="#logout">
+        <i class="fas fa-sign-out-alt fa-2x" alt="Logout"></i>
+      </a>
+
+      <!-- Logout modal -->
+      <div id="logout" class="modal">
+
+        <!-- Delete logout modal content -->
+        <div class="modal-content">
+          <form action="/logout?_method=DELETE" method="POST">
+            <div>
+              <h1>
+                Are you sure that you want to logout?
+              </h1>
+            </div>
+            <div>
+              <button class="submit-logout">
+                Logout
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Delete profile icon -->
+      <a class="modal-button" href="#deleteProfile">
+        <i class="fas fa-user-minus fa-2x" alt="Delete Profile"></i>
+      </a>
+
+      <!-- Delete profile modal -->
+      <div id="deleteProfile" class="modal">
+
+        <!-- Delete profile modal content -->
+        <div class="modal-content">
+          <form action="/delete-profile?_method=DELETE" method="POST">
+            <div>
+              <h1>
+                Are you sure that you want to delete your profile?
+              </h1>
+            </div>
+            <div>
+              <button class="submit-delete">
+                Delete
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+    <% include partials/_footer %> 
+  </body>
+</html>
