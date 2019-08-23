@@ -88,7 +88,7 @@
 
         <!-- Delete profile modal content -->
         <div class="modal-content">
-          <form action="/delete-profile?_method=DELETE" method="POST">
+          <form action="/delete-profile/<%= email %>?_method=DELETE" method="POST">
             <div>
               <h1>
                 Are you sure that you want to delete your profile?

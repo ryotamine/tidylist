@@ -157,12 +157,15 @@ app.put("/update-profile/:email", (req, res) => {
 });
 
 // DELETE profile
-app.delete("/delete-profile", (req, res) => {
+app.delete("/delete-profile/:email", (req, res) => {
   database("users")
     .where({
-      id: database.id
+      email: req.params.email
     })
     .del()
+    .finally(() => {
+      database.destroy;
+    })
     .then(() => {
       // Remove cookie session 
       req.session = null;
