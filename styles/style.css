@@ -3,16 +3,6 @@
   text-align: center;
 }
 
-/* Delete profile info */
-.delete-info {
-  top: 50%;
-}
-
-/* Home page */
-.home {
-  padding: 10px;
-}
-
 /* Fontawesome icons */
 i {
   color: black;
@@ -54,34 +44,6 @@ input[type=email], input[type=password] {
   width: 68%;
 }
 
-/* Popup content */
-.popup-content {
-  border: 1px solid black !important;
-  border-radius: 12px;
-  padding: 24px !important;
-}
-
-/* Register, login, update, delete, and logout profile submit buttons */
-.submit-register, .submit-login, .submit-update, .submit-delete, .submit-logout {
-  background-color: #2196F3;
-  border: none;
-  border-radius: 24px;
-  color: #FFF;
-  cursor: pointer;
-  font-size: 24px;
-  outline: none;
-  padding: 12px 24px;
-  width: auto;
-}
-
-/* App title */
-.title {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 64px;
-  margin: 0px;
-  padding-bottom: 8px;
-}
-
 /* Modal background */
 .modal {
   background-color: rgb(0,0,0);
@@ -105,19 +67,25 @@ input[type=email], input[type=password] {
   width: 68%;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+/* Register, login, update, delete, and logout profile submit buttons */
+.submit-register, .submit-login, .submit-update, .submit-delete, .submit-logout {
+  background-color: #2196F3;
+  border: none;
+  border-radius: 24px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 24px;
+  outline: none;
+  padding: 12px 24px;
+  width: auto;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+/* App title */
+.title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 64px;
+  margin: 0px;
+  padding-bottom: 8px;
 }
 
 /* Responsive design */
