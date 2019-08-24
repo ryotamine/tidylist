@@ -1,3 +1,5 @@
+"use strict";
+
 // Get the button that opens the modal
 const btn = document.getElementsByClassName("modal-button");
 

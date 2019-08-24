@@ -1,3 +1,5 @@
+"use strict";
+
 // Store list items in an array
 function getList() {
   let list = [];

@@ -42,15 +42,15 @@ body {
   100% {background-position: 18% 0%}
 }
 
+/* Add list item header */
+.header {
+  padding: 0px 8px;
+}
+
 /* Fontawesome icons */
 i {
   color: #fefefe;
   padding: 0px 8px 16px;
-}
-
-/* Add list item header */
-.header {
-  padding: 0px 8px;
 }
 
 /* Fontawesome hover icons */
@@ -183,8 +183,13 @@ li.checked {
   float: right;
 } 
 
-/* Register, login, update, delete, and logout profile submit buttons */
-.submit-register, .submit-login, .submit-update, .submit-delete, .submit-logout {
+/* Delete, login, logout, register, and update profile submit buttons */
+.submit-delete, 
+.submit-login, 
+.submit-logout, 
+.submit-register, 
+.submit-update 
+{
   background-color: #2196f3;
   border: none;
   border-radius: 24px;
@@ -197,12 +202,13 @@ li.checked {
   width: auto;
 }
 
-/* Register, login, update, delete, and logout profile submit buttons hover */
-.submit-register:hover, 
+/* Delete, login, logout, register, and update profile submit buttons hover */
+.submit-delete:hover,
 .submit-login:hover, 
-.submit-update:hover, 
-.submit-delete:hover, 
-.submit-logout:hover {
+.submit-logout:hover, 
+.submit-register:hover, 
+.submit-update:hover 
+{
   background-color: #1b77c2;
 }
 
@@ -227,11 +233,7 @@ ul {
     width: 68%;
   }
 
-  li {
-    width: auto;
-  }
-
-  .modal-content {
+  li, .modal-content {
     width: auto;
   }
 }
