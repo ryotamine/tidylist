@@ -6,6 +6,7 @@ const cookieSession  = require("cookie-session");
 const bcrypt         = require("bcrypt");
 const bodyParser     = require("body-parser");
 const methodOverride = require("method-override");
+const serveFavicon   = require("serve-favicon");
 
 // Use port 8080
 const app  = express();
@@ -30,6 +31,9 @@ app.use(methodOverride("_method"));
 
 // Set ejs as the template engine
 app.set("view engine", "ejs");
+
+// Use favicon in ejs
+app.use(serveFavicon(__dirname + "/images/tidylist.ico"));
 
 // Use CSS in ejs
 app.use(express.static(__dirname + "/styles"));
