@@ -9,6 +9,38 @@ a {
   text-align: center;
 }
 
+/* CSS animation at all background pages 
+(https://gist.github.com/feliciaceballos/8971704f5b6a653c610dcb48178470fc) */
+body {
+  -moz-animation: Aurora 180s ease;
+  -webkit-animation: Aurora 180s ease;
+  animation: Aurora 180s ease;
+  animation-iteration-count: infinite;
+  background: linear-gradient(#05051f, #05051f, #97f7f3, #05051f, #05051f, 
+  #05051f, #76f6bd, #aaebc9, #05051f, #05051f, #69c1ff, #cb304f, #05051f, 
+  #05051f, #05051f, #05051f, #4a5b8f, #419f91, #05051f, #05051f, #3a4aa1, 
+  #db3b69, #05051f);
+  background-size: 1800% 1800%;
+  height: 100vh;
+  width: 100vw;
+}
+
+@-moz-keyframes Aurora {
+  0%   {background-position: 18% 0%}
+  50%  {background-position: 83% 100%}
+  100% {background-position: 18% 0%}
+}
+@keyframes Aurora { 
+  0%   {background-position: 18% 0%}
+  50%  {background-position: 83% 100%}
+  100% {background-position: 18% 0%}
+}
+@-webkit-keyframes Aurora {
+  0%   {background-position: 18% 0%}
+  50%  {background-position: 83% 100%}
+  100% {background-position: 18% 0%}
+}
+
 /* Fontawesome icons */
 i {
   color: #fefefe;
