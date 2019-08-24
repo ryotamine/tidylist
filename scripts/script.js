@@ -38,7 +38,15 @@ for (let i = 0; i < remove.length; i++) {
   }
 }
 
-// When the clicks on the add button, create a new list item
+// Add a strike out text when clicking on a list item
+const list = document.querySelector("ul");
+list.addEventListener("click", function(e) {
+  if (e.target.tagName === "LI") {
+    e.target.classList.toggle("checked");
+  }
+}, false);
+
+// When clicking on the add button, create a new list item
 function newItem() {
   const li = document.createElement("li");
   const title = document.getElementById("title").value;
