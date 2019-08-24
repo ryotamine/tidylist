@@ -22,6 +22,7 @@ body {
   #db3b69, #05051f);
   background-size: 1800% 1800%;
   height: 100vh;
+  margin: 16px 0px;
   width: 100vw;
 }
 
@@ -45,6 +46,11 @@ body {
 i {
   color: #fefefe;
   padding: 0px 8px 16px;
+}
+
+/* Add list item header */
+.header {
+  padding: 0px 8px;
 }
 
 /* Fontawesome hover icons */
@@ -191,6 +197,15 @@ li.checked {
   width: auto;
 }
 
+/* Register, login, update, delete, and logout profile submit buttons hover */
+.submit-register:hover, 
+.submit-login:hover, 
+.submit-update:hover, 
+.submit-delete:hover, 
+.submit-logout:hover {
+  background-color: #1b77c2;
+}
+
 /* App title */
 .title {
   color: #fefefe;
@@ -203,7 +218,7 @@ li.checked {
 /* Entire list */
 ul {
   margin: 0px;
-  padding: 0px;
+  padding: 0px 8px;
 }
 
 /* Responsive design */
