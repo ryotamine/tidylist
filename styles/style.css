@@ -194,6 +194,7 @@ li.checked {
 /* App title */
 .title {
   color: #fefefe;
+  font-family: Papyrus, Arial, sans-serif;
   font-size: 64px;
   margin: 0px;
   padding-bottom: 8px;
