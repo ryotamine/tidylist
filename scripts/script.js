@@ -20,54 +20,67 @@ window.onclick = (e) => {
   }
 }
 
-// Create a remove button and append it to each list item
-const listItem = document.getElementsByTagName("li");
-for (let i = 0; i < listItem.length; i++) {
-  const span = document.createElement("span");
-  const txt = document.createTextNode("\u00D7");
-  span.className = "remove";
-  span.appendChild(txt);
-  listItem[i].appendChild(span);
+// Store list items in an array
+function getList() {
+  let list = [];
+  let listStr = localStorage.getItem("item");
+  if (listStr !== null) {
+    list = JSON.parse(listStr);
+  }
+  return list;
 }
 
-// Click on a remove button to delete the current list item
-const remove = document.getElementsByClassName("remove");
-for (let i = 0; i < remove.length; i++) {
-  remove[i].onclick = () => {
-    listItem[i].style.display = "none";
-  }
-}
-
-// Add a strike out text when clicking on a list item
-const list = document.querySelector("ul");
-list.addEventListener("click", function(e) {
-  if (e.target.tagName === "LI") {
-    e.target.classList.toggle("checked");
-  }
-}, false);
-
-// When clicking on the add button, create a new list item
-function newItem() {
-  const li = document.createElement("li");
+// Add list item in an array
+function add() {
   const title = document.getElementById("title").value;
-  const t = document.createTextNode(title);
-  li.appendChild(t);
-  if (title === "") {
-    alert("Please write something!");
-  } else {
-    document.getElementById("list").appendChild(li);
-  }
+  
+  let list = getList();
+  list.push(title);
+  localStorage.setItem("item", JSON.stringify(list));
   document.getElementById("title").value = "";
+  show();
 
-  const span = document.createElement("span");
-  const txt = document.createTextNode("\u00D7");
-  span.className = "remove";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (let i = 0; i < remove.length; i++) {
-    remove[i].onclick = () => {
-      listItem[i].style.display = "none";
-    }
-  }
+  return false;
 }
+
+// Remove list item in an array
+function remove() {
+  let id = this.getAttribute("id");
+  let list = getList();
+  list.splice(id, 1);
+  localStorage.setItem("item", JSON.stringify(list));
+
+  show();
+
+  return false;
+}
+
+// Show list item in browser
+function show() {
+  let list = getList();
+
+  let html = "<ul>";
+  for (let i = 0; i < list.length; i++) {
+    html += `<li>${list[i]}<span class="remove" id="${i}">x</span></li>`;
+  };
+  html += "</ul>";
+
+  document.getElementById("list").innerHTML = html;
+
+  // Add a strike out text when clicking on a list item
+  document.querySelector("ul").addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+    }
+  }, false);
+  
+  // Trigger remove function when clicking on a list item
+  let x = document.getElementsByClassName("remove");
+  for (let i = 0; i < x.length; i++) {
+    x[i].addEventListener("click", remove);
+  };
+}
+
+// Maintain list items during refresh and logout
+document.getElementById("add").addEventListener("click", add);
+show();
