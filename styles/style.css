@@ -1,3 +1,8 @@
+/* Remove anchor tag underline */
+a {
+  text-decoration: none;
+}
+
 /* All pages */
 .app {
   font-family: Helvetica, Arial, sans-serif;
@@ -6,18 +11,19 @@
 
 /* Fontawesome icons */
 i {
-  color: black;
+  color: #fefefe;
   padding: 0px 8px 16px;
 }
 
 /* Fontawesome hover icons */
 i:hover {
-  color: grey;
+  color: #888;
   cursor: pointer;
 }
 
 /* Icons after input fields */
 .icon-after {
+  background-color: #fefefe;
   border-bottom: 1px solid #ccc;
   border-bottom-right-radius: 27px;
   border-right: 1px solid #ccc;
@@ -31,12 +37,13 @@ i:hover {
 
 /* Icons after input fields hover */
 .icon-after:hover {
-  color: grey;
+  color: #888;
   cursor: pointer;
 }
 
 /* Icons before input fields */
 .icon-before {
+  background-color: #fefefe;
   border-bottom: 1px solid #ccc;
   border-bottom-left-radius: 27px;
   border-left: 1px solid #ccc;
@@ -50,6 +57,7 @@ i:hover {
 
 /* Full-width input fields */
 input[type=email], input[type=password] {
+  background-color: #fefefe;
   border-bottom: 1px solid #ccc;
   border-bottom-right-radius: 27px;
   border-left: none;
@@ -66,6 +74,7 @@ input[type=email], input[type=password] {
 }
 
 input[type=text] {
+  background-color: #fefefe;
   border: 1px solid #ccc;
   border-left: none;
   border-right: none;
@@ -78,7 +87,7 @@ input[type=text] {
 
 /* List items */
 li {
-  background: #eee;
+  background: #ddd;
   border: 1px solid #ccc;
   border-radius: 27px;
   cursor: pointer;
@@ -98,20 +107,20 @@ li:nth-child(odd) {
 
 /* List item background colour at hover */
 li:hover {
-  background: #ddd;
+  background: #ccc;
 }
 
 /* When list item is clicked, strike out text */
 li.checked {
   background: #888;
-  color: #fff;
+  color: #fefefe;
   text-decoration: line-through;
 }
 
 /* Modal background */
 .modal {
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.8);
   display: none;
   height: 100%;
   left: 0;
@@ -131,16 +140,17 @@ li.checked {
   width: 68%;
 }
 
+/* Place remove list item (x) to the right */
 .remove {
   float: right;
 } 
 
 /* Register, login, update, delete, and logout profile submit buttons */
 .submit-register, .submit-login, .submit-update, .submit-delete, .submit-logout {
-  background-color: #2196F3;
+  background-color: #2196f3;
   border: none;
   border-radius: 24px;
-  color: #FFF;
+  color: #fefefe;
   cursor: pointer;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 24px;
@@ -151,6 +161,7 @@ li.checked {
 
 /* App title */
 .title {
+  color: #fefefe;
   font-size: 64px;
   margin: 0px;
   padding-bottom: 8px;
