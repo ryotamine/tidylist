@@ -145,7 +145,7 @@ app.put("/update-profile/:email", (req, res) => {
   } else {
     /* Check if email already exists in users database.
     If so, send error message.
-    If not, add registration information in users database. */
+    If not, update information in users database. */
     database.select("email")
       .from("users")
       .where("email", email)
