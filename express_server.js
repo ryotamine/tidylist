@@ -109,18 +109,28 @@ app.put("/login", (req, res) => {
     /* Compare email and password to users database.
     If both matches, go to user's page.
     If not, send error message. */
-    database.select("password")
+    database.select("email")
       .from("users")
-      .where({
-        email: email
-      }).asCallback((err, rows) => {
-        let result = bcrypt.compareSync(password, rows[0].password);
-        if (result === false) {
-          res.status(400).send("Invalid password. Please try again.");
+      .where("email", email)
+      .then((emailList) => {
+        if (emailList.length === 0) {
+          res.status(400).send("Invalid email. Please try again.");
+          return;
         } else {
-          // Add cookie session after login
-          req.session.user_id = database.id;
-          res.redirect(`/${email}`);
+          database.select("password")
+            .from("users")
+            .where({
+              email: email
+            }).asCallback((err, rows) => {
+              let result = bcrypt.compareSync(password, rows[0].password);
+              if (result === false) {
+                res.status(400).send("Invalid password. Please try again.");
+              } else {
+                // Add cookie session after login
+                req.session.user_id = database.id;
+                res.redirect(`/${email}`);
+              }
+            });
         }
       });
   }
