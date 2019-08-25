@@ -143,19 +143,32 @@ app.put("/update-profile/:email", (req, res) => {
     res.status(400).send("Invalid entry. Please try again.");
     return;
   } else {
-    database("users")
-      .where({
-        email: req.params.email
-      })
-      .update({
-        email: email,
-        password: hashedPassword
-      })
-      .finally(() => {
-        database.destroy;
-      })
-      .then(() => {
-        res.redirect(`/${email}`);
+    /* Check if email already exists in users database.
+    If so, send error message.
+    If not, add registration information in users database. */
+    database.select("email")
+      .from("users")
+      .where("email", email)
+      .then((emailList) => {
+        if (emailList.length !== 0) {
+          res.status(400).send("Email already exists. Please try again.");
+          return;
+        } else {
+          database("users")
+            .where({
+              email: req.params.email
+            })
+            .update({
+              email: email,
+              password: hashedPassword
+            })
+            .finally(() => {
+              database.destroy;
+            })
+            .then(() => {
+              res.redirect(`/${email}`);
+            });
+        }
       });
   }
 });
